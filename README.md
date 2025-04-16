@@ -15,6 +15,7 @@
 - [What is this?](#what-is-this)
 - [개선점](#개선점)
 - [디렉터리 구조](#디렉터리-구조)
+- [실행 방법](#실행-방법)
 
 <br>
 <br>
@@ -26,7 +27,7 @@
 `Child Module`들은 GCP에서 제공하는 공식 깃허브 모듈을 Fork하여 사용하였으며, 🍴 <br> 
 그 외 kubernetes, helm Resource 등 단일 리소스들은 `Terraform Registry`를 활용하여 작성하였습니다. 📝 <br>
 Terraform과 모듈에 대해 학습 후 직접 설계하고 인터넷을 참고하여 만든 것이기에 실수가 많고 부족한 부분이 많습니다. <br>
-많은 피드백은 정말 감사합니다. 😁
+`Pull Request` or `Issue` 를 활용한 피드백은 정말정말 감사합니다. 😁
 
 ### :sparkles: HELP
 
@@ -98,9 +99,9 @@ Terraform과 모듈에 대해 학습 후 직접 설계하고 인터넷을 참고
 
 5. GKE와 그 외 리소스 생성 주기를 나눈다.
    - kubernetes, helm 관련 data들은 GKE와 연결된 상태에서 리소스를 확인하기에, <br>
-     단순히 `Terragrunt plan -out=tfplan` 사용 시 GKE에 연결할 수 없다는 에러가 발생.
+     단순히 `Terragrunt plan -out=tfplan` 사용 시 GKE에 연결할 수 없어 문제 발생.
 
-   => ✅ Network ~ GKE까지 생성하는 모듈을 분리하여 <br>
+   => ✅ Network ~ GKE까지 생성하는 모듈을 분리 후 <br>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `terragrunt plan -target=module.private_cluster -out=tfplan` 실행 후 <br>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `Terragrunt plan -out=tfplan` 를 실행한다.
 
@@ -159,4 +160,71 @@ terraform-google-multi-env/
 5. `modules/` 폴더 내부에 루트 모듈이 사용하는 자식 모듈들이 존재합니다.
 6. 기능들에 따라 리소스를 `main_*.tf` 파일로 분리하여 유지보수성 및 가독성을 높였습니다.
 
+<br>
+<br>
+<br>
+
+# 실행 방법
+1. terraform을 설치한다.
+   - [install terraform](https://developer.hashicorp.com/terraform/install)
+2. terragrunt를 설치한다.
+   - [install terragrunt](https://terragrunt.gruntwork.io/docs/getting-started/install/)
+3. GCP CLI를 설치한다.
+   - [install GCP CLI](https://cloud.google.com/sdk/docs/install?hl=ko)
+4. Github Repository를 Clone 한다.
+   ```
+   git clone https://github.com/steamedEggMaster/terraform-google-multi-env.git
+   ```
+
+5. GCP에서 Terraform을 사용할 계정을 생성한다.
+   
+   1. GCP는 계정마다 무료 300달러를 제공한다. ▶️ 300달러 받기위한 설정을 수행한다.
+
+   2. 새로운 프로젝트를 생성한다.
+      - 이때, 프로젝트 ID를 반드시 `1-provider.yaml`의 `project_id`와 동일하게 생성한다.
+
+   3. 생성된 프로젝트에 접속 후, Service Accounts 섹션으로 이동한다.
+      - Service Account를 Owner 권한으로 생성 후, json credential key를 다운로드 받는다.
+
+   4. GCS 섹션으로 이동하여 GCS를 생성한다.
+      - 이때, GCS 명은 반드시 `terragrunt.hcl`의 `bucket이름`과 동일해야 한다.
+
+   5. ServiceUsage API 섹션으로 이동하여 API를 활성화 한다.
+      - API Enabled 상태라면 넘어간다.
+
+6. gcloud CLI 를 통해 서비스 계정을 현재 세션이 사용하도록 설정
+   ```
+   gcloud auth activate-service-account --key-file=<다운로드한 json key 위치>
+   ```
+
+7. `/env/환경/` 폴더로 이동
+   ```
+   cd ./terraform-google-multi-env/env/환경 
+   ```
+
+8. 필요한 yaml 파일과 terragrunt.hcl 파일을 **디렉터리 구조**에 맞게 작성.
+
+9. terragrunt 초기화
+   ```
+   terragrunt init
+   ```
+
+10. terragrunt 실행 - 변경 사항 확인 후 apply‼️
+   1. GKE를 생성하는 경우
+      ```
+      terragrunt plan -target=module.private_cluster -out=tfplan
+      terragrunt apply tfplan
+      
+      terragrunt plan -out=tfplan
+      terragrunt apply tfplan  
+      ```
+   2. GKE를 생성하지 않는 경우
+      ```
+      terragrunt plan -out=tfplan
+      terragrunt apply tfplan  
+      ```
+
+<br>
+<hr>
+<br>
 
