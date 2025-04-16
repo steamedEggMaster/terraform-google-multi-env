@@ -210,19 +210,19 @@ terraform-google-multi-env/
    ```
 
 10. terragrunt 실행 - 변경 사항 확인 후 apply‼️
-   1. GKE를 생성하는 경우
-      ```
-      terragrunt plan -target=module.private_cluster -out=tfplan
-      terragrunt apply tfplan
+    1. GKE를 생성하는 경우
+       ```
+       terragrunt plan -target=module.private_cluster -out=tfplan
+       terragrunt apply tfplan
       
-      terragrunt plan -out=tfplan
-      terragrunt apply tfplan  
-      ```
-   2. GKE를 생성하지 않는 경우
-      ```
-      terragrunt plan -out=tfplan
-      terragrunt apply tfplan  
-      ```
+       terragrunt plan -out=tfplan
+       terragrunt apply tfplan  
+       ```
+    2. GKE를 생성하지 않는 경우
+       ```
+       terragrunt plan -out=tfplan
+       terragrunt apply tfplan  
+       ```
 
 <br>
 <hr>
