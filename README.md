@@ -41,8 +41,8 @@ Terraform과 모듈에 대해 학습 후 직접 설계하고 인터넷을 참고
 
 # 개선점
 
-1. terraform.tfvars 파일과 variables.tf을 사용하지 않는다. <br>
-   - 기존에 사용하던 terraform.tfvars 파일은 가독성이 너무 떨어졌고, <br>
+1. `terraform.tfvars` 파일과 `variables.tf`을 과도하게 사용하지 않는다. <br>
+   - 기존에 사용하던 terraform.tfvars 파일은 가독성이 너무 떨어졌고 ⬇️, <br>
      variables.tf 파일의 내용이 많으면 내용 파악이 쉽지 않았음.
    
      => ✅ YAML로 변수들을 리소스에 따라 파일로 나누어 관리하고, <br>
@@ -60,14 +60,14 @@ Terraform과 모듈에 대해 학습 후 직접 설계하고 인터넷을 참고
 
      1. **Terraform Workspace** <br>
         - 기존에는 해당 방법으로 구축하려 했으나, <br> 
-          1. 상태 파일 하나에서 모든 환경의 상태를 관리해야 하는 문제와 <br>
+          1. 상태 파일 하나에서 모든 환경의 상태를 관리해야 하는 문제 <br>
           2. 실수로 환경 변경 없이 CLI 실행할 수 있는 문제(코드로 환경을 확인해야 함) <br>
         
           등의 한계로 인하여 2번 방법 채택‼️
      
      2. **Terragrunt** <br>
         - 직접 경험한 장점들
-          1. 사용할 Terraform 모듈을 경로 상으로 설정 <- 이 기능을 통해, 하나의 루트 모듈을 공유 가능.
+          1. 사용할 Terraform 모듈을 경로 상으로 설정 <- 이 기능을 통해, 하나의 루트 모듈을 여러 환경이 공유 가능.
           2. 상태 파일 관리 환경별 개별화 가능.
           3. 상태 파일 이름에 변수 설정 가능 <- 동적인 이름 설정 기능을 사용하여 이후, `셸스크립트 기반 GCP 계정 이동 재구축 자동화` 수행.
    - [참고 사이트 - Terraform 코드 중복•관리 복잡도 해결하기](https://insight.infograb.net/blog/2024/11/13/terragrunt/?utm_source=chatgpt.com)
