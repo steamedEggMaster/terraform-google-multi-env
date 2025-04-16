@@ -14,6 +14,7 @@
 
 - [What is this?](#what-is-this)
 - [구성 목표 및 방법](#구성-목표-및-방법)
+- [디렉터리 구조](#디렉터리-구조)
 
 <br>
 <br>
@@ -90,7 +91,29 @@ Terraform과 모듈에 대해 학습 후 직접 설계하고 인터넷을 참고
      2. `for_each`는 해당 리소스에 대한 여러 구성에 맞게 각각 리소스 생성.
         - map 타입과 key-value 형태의 object 타입 사용 가능.
         - YAML은 key-value 형태의 object 타입 그 자체이기에, 사용하기 적합. <br>
-          => ✅ locals.tf에서 `중첩 3항 연산자`를 통해, 4번 내용을 안전하게 **fallback** 가능.
+          => ✅ locals.tf에서 `중첩 3항 연산자`를 통해, 4번 목표를 안전하게 **fallback** 가능.
+          - [locals.tf로 이동하기](https://github.com/steamedEggMaster/terraform-google-multi-env/blob/main/terraform/locals.tf)
 
 <br>
-<hr>
+<br>
+<br>
+
+# 디렉터리 구조
+
+```
+terraform-google-multi-env/
+├── env/
+│   ├── dev/
+│   ├── db/
+│   └── prd/
+├── modules/
+│   ├── gke/
+│   └── network/
+├── yamls/
+│   ├── gke.yaml
+│   └── ingress.yaml
+├── main.tf
+├── locals.tf
+├── README.md
+└── ...
+```
