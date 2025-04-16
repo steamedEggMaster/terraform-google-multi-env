@@ -101,8 +101,8 @@ Terraform과 모듈에 대해 학습 후 직접 설계하고 인터넷을 참고
    - kubernetes, helm 관련 data들은 GKE와 연결된 상태에서 리소스를 확인하기에, <br>
      단순히 `Terragrunt plan -out=tfplan` 사용 시 GKE에 연결할 수 없어 문제 발생.
 
-   => ✅ Network ~ GKE까지 생성하는 모듈을 분리 후 <br>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `terragrunt plan -target=module.private_cluster -out=tfplan` 실행 후 <br>
+     => ✅ Network ~ GKE까지 생성하는 모듈을 분리 후 <br>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `terragrunt plan -target=module.private_cluster -out=tfplan` 실행하고 <br>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `Terragrunt plan -out=tfplan` 를 실행한다.
 
 <br>
