@@ -72,7 +72,7 @@ Terraform과 모듈에 대해 학습 후 직접 설계하고 인터넷을 참고
 
 <br>
 
-3. GitOps 기반 리소스들을 제외하고,
+3. GitOps 기반 리소스들을 제외하고, <br>
    Kubernetes 생성과 동시에 필요한 리소스(예 : namespace, ingress-nginx, cert-manager 등)를 Terraform으로 생성한다.
    - 기존에는 직접 안에서 다운로드를 받고 설정해야 했음. ♨️ <br>
 
