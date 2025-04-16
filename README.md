@@ -224,6 +224,12 @@ terraform-google-multi-env/
        terragrunt apply tfplan  
        ```
 
+11. terragrunt 리소스 삭제
+    ```
+    terragrunt destroy 또는
+    terragrunt destroy --auto-approve
+    ```
+
 <br>
 <hr>
 <br>
