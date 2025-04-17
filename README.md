@@ -84,6 +84,7 @@ Terraform과 모듈에 대해 학습 후 직접 설계하고 인터넷을 참고
           1. 사용할 Terraform 모듈을 경로 상으로 설정 <- 이 기능을 통해, 하나의 루트 모듈을 여러 환경이 공유 가능.
           2. 상태 파일 관리 환경별 개별화 가능.
           3. 상태 파일 이름에 변수 설정 가능 <- 동적인 이름 설정 기능을 사용하여 이후, `셸스크립트 기반 GCP 계정 이동 재구축 자동화` 수행.
+          4. terragrunt 실행을 위해선 `파일이 위치한 폴더`로 이동해야 함 <- 환경 혼동 ⬇️
 
    - [참고 사이트 - Terraform 코드 중복•관리 복잡도 해결하기](https://insight.infograb.net/blog/2024/11/13/terragrunt/?utm_source=chatgpt.com)
 
@@ -122,6 +123,8 @@ Terraform과 모듈에 대해 학습 후 직접 설계하고 인터넷을 참고
      => ✅ Network ~ GKE까지 생성하는 모듈을 분리 후 <br>
      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `terragrunt plan -target=module.private_cluster -out=tfplan` 실행하고 <br>
      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `Terragrunt plan -out=tfplan` 를 실행한다.
+
+6. tfstate 
 
 <br>
 <br>
