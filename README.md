@@ -16,6 +16,8 @@
 - [개선점](#개선점)
 - [디렉터리 구조](#디렉터리-구조)
 - [실행 방법](#실행-방법)
+- [TF Docs](#tf-docs)
+   - [1. Requirements](1.-Requirements)
 
 <br>
 <br>
@@ -236,3 +238,70 @@ terraform-google-multi-env/
 <hr>
 <br>
 
+# TF Docs
+
+#### 1. Requirements
+
+| Name    | Version     |
+|---------|-------------|
+| terraform | >= 1.10.3 |
+
+#### 2. Providers
+
+| Provider    | Source                 | Version     |
+|-------------|------------------------|-------------|
+| `google`    | `hashicorp/google`     | `~> 6.0`    |
+| `kubernetes`| `hashicorp/kubernetes` | `~> 2.0`    |
+| `helm`      | `hashicorp/helm`       | `~> 2.0`    |
+| `kubectl`   | `gavinbunney/kubectl`  | `~> 1.14`   |
+
+#### 3. Modules
+
+| 모듈 이름              | 설명 |
+|------------------------|------|
+| `private_cluster`      | GCP VPC, Subnet, GKE 클러스터, Cloud NAT 등 인프라 구성 모듈 |
+| `service_account`      | GCP 서비스 계정 생성 모듈 |
+| `service_account_iam`  | 서비스 계정에 IAM 권한을 부여하는 모듈 |
+| `artifact_registry_iam`| Artifact Registry에 대한 IAM 권한을 설정하는 모듈 |
+| `storage_bucket_iam`   | Cloud Storage 버킷에 대한 IAM 권한을 설정하는 모듈 |
+| `database`             | Cloud SQL(PostgreSQL) 데이터베이스 인스턴스를 생성하는 모듈 |
+| `registry`             | Artifact Registry(컨테이너 이미지 저장소)를 생성하는 모듈 |
+| `bucket`               | Cloud Storage 버킷을 생성하는 모듈 |
+| `k8s_namespace`        | Kubernetes 네임스페이스를 생성하는 모듈 |
+| `k8s_sa`               | Kubernetes ServiceAccount를 생성하는 모듈 |
+| `kubectl_manifest`     | Kubectl Provider를 사용해 k8s 리소스(YAML)를 배포하는 모듈 |
+
+#### 4. resources
+
+| 리소스 종류                    | 설명 |
+|-----------------------------|------|
+| `google_sql_ssl_cert`       | 생성한 GCP Cloud SQL 인트턴스의 SSL 인증서 가져오는 리스소 |
+| `google_compute_instance`   | GCP VM 인스턴스 생성 리소스 |
+| `helm_release`              | Helm 차트를 Kubernetes에 배포하는 리소스 |
+
+#### 5. Inputs
+
+| 변수 이름      | 설명             | 타입    | 필수 여부 |
+|----------------|------------------|---------|-----------|
+| `file_path`    | config 파일 경로 | `string`| ✅        |
+| `env`          | 배포 환경        | `string`| ✅        |
+
+##### 🚫 주의할 점
+1. `terragrunt`는 `init` 수행 시 `env/환경/` 디렉터리 하위에 **캐싱 폴더(.terragrunt-cache)** 를 생성합니다. <br>
+    이후 실행되는 모든 Terraform 코드는 **이 캐시된 디렉터리 기준으로 동작**하므로,  <br>
+   `config` 파일 경로는 반드시 **캐시 디렉터리 기준으로 작성해야 합니다.** <br>
+
+2. 이 프로젝트는 `yamldecode()`를 기반으로 리소스를 구성하기 때문에,  <br>
+   대부분의 변수는 `Inputs` 항목에 정의되어 있지 않습니다.  <br>
+   필요한 값은 각 모듈의 변수 정의를 직접 확인하여,  <br>
+   해당 스타일에 맞게 YAML 파일을 작성해주셔야 합니다. 
+
+#### 6. Outputs
+
+| 출력 변수              | 설명                                                   | 민감 정보 |
+|------------------------|--------------------------------------------------------|------------|
+| `all_vm_ips`           | 생성된 VM 인스턴스들의 Internal/External IP          | ❌         |
+| `nginx_ingress_ip`     | Nginx Ingress Controller의 External IP                | ❌         |
+| `database_ips`         | 생성된 데이터베이스의 Internal/External IP           | ❌         |
+| `db_cert`              | 데이터베이스 SSL 연결용 인증서 정보                  | ✅         |
+| `redis_master_ip`      | Redis Master 서비스의 External IP                     | ❌         |
