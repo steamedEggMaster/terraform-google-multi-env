@@ -95,12 +95,13 @@ Terraform과 모듈에 대해 학습 후 직접 설계하고 인터넷을 참고
 
     - 기존에는 k8s 접속 후 직접 다운로드를 받고 설정해야 했음. ♨️ <br>
 
-           - Helm, kubernetes Provider를 사용하여 자동화. <br>
+       - Helm, kubernetes Provider를 사용하여 자동화. <br>
              Terraform은 단순히 CSP 리소스만이 아닌, data 기반 GKE 연결을 통해 k8s 리소스도 생성이 가능. <br>
-             => ✅ Argocd의 `CRD(Costum Resource Definition)`를 사용한다면, Application 배포까지 자동화 가능한 엄청난 기능‼️
-             - [data.tf로 이동하기](https://github.com/steamedEggMaster/terraform-google-multi-env/blob/main/terraform/data.tf)
+             => ✅ Argocd의 `CRD(Costum Resource Definition)`를 사용한다면, Application 배포까지 자동화 가능한 엄청난 기능‼️ <br>
+             
+         - [data.tf로 이동하기](https://github.com/steamedEggMaster/terraform-google-multi-env/blob/main/terraform/data.tf)
 
-      <br>
+<br>
 
 4.  각 환경 별로 필요없는 모듈(YAML 파일)이 있기에, YAML 파일 존재 여부를 파악하고,
     파일은 있더라도, 주석 처리를 통해 리소스 생성을 방지해도 문제 없도록 한다.
@@ -111,7 +112,8 @@ Terraform과 모듈에 대해 학습 후 직접 설계하고 인터넷을 참고
          - *map 타입*과 _key-value 형태의 object 타입_ 사용 가능.
          - YAML은 key-value 형태의 object 타입 그 자체이기에, 사용하기 적합. <br>
            => ✅ locals.tf에서 `중첩 3항 연산자`를 통해, 4번 목표를 안전하게 **fallback** 가능.
-           - [locals.tf로 이동하기](https://github.com/steamedEggMaster/terraform-google-multi-env/blob/main/terraform/locals.tf)
+
+         - [locals.tf로 이동하기](https://github.com/steamedEggMaster/terraform-google-multi-env/blob/main/terraform/locals.tf)
 
 <br>
 
@@ -123,8 +125,6 @@ Terraform과 모듈에 대해 학습 후 직접 설계하고 인터넷을 참고
      => ✅ Network ~ GKE까지 생성하는 모듈을 분리 후 <br>
      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `terragrunt plan -target=module.private_cluster -out=tfplan` 실행하고 <br>
      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `Terragrunt plan -out=tfplan` 를 실행한다.
-
-6. tfstate 
 
 <br>
 <br>
