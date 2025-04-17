@@ -55,7 +55,7 @@ Terraform과 모듈에 대해 학습 후 직접 설계하고 인터넷을 참고
      variables.tf 파일의 내용이 많으면 내용 파악이 쉽지 않았음.
 
      => ✅ YAML로 변수들을 리소스에 따라 파일로 나누어 관리하고, <br>
-     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Terraform의 `yamldecode(templatefile())`로 String Interpolation을 이용하여 중복 변수들을 `한곳에서 관리`하자‼️ <br>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Terraform의 `yamldecode(templatefile())`로 **String Interpolation**을 이용하여 중복 변수들을 `한곳에서 관리`하자‼️ <br>
 
      - ✨ 이렇게 하면 variables에 모든 변수에 대한 내용을 담을 필요없게됨 ✨.
 
