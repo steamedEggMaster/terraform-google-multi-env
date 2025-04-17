@@ -127,12 +127,6 @@ Terraform과 모듈에 대해 학습 후 직접 설계하고 인터넷을 참고
      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `Terragrunt plan -out=tfplan` 를 실행한다.
 
      - [main.tf로 이동하기](https://github.com/steamedEggMaster/terraform-google-multi-env/blob/main/terraform/main.tf)
-    
-<br>
-
-6. tfstate를 로컬이 아닌 원격에서 관리한다.
-
-   - 로컬에서 
 
 <br>
 <br>
