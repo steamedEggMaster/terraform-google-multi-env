@@ -1,4 +1,6 @@
 env/*/
 !env/example_*/
+env/example_*/.terragrunt-cache/
+env/example_*/.terraform.lock.hcl
 
 .DS_Store
