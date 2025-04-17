@@ -320,7 +320,7 @@ terraform-google-multi-env/
 <br>
 
 # 참고 자료
-1. [Interview_Question_for_Beginner](https://github.com/jbee37142/Interview_Question_for_Beginner)
+1. [Interview_Question_for_Beginner](https://github.com/jbee37142/Interview_Question_for_Beginner) - README.md 작성 형식 학습
 2. [확장 가능한 테라폼 코드관리](https://www.youtube.com/watch?v=m9HeYtzeiLI)
 3. [Terraform 코드 중복•관리 복잡도 해결하기](https://insight.infograb.net/blog/2024/11/13/terragrunt/?utm_source=chatgpt.com)
 4. [Terraform Best Practice Examples](https://www.terraform-best-practices.com/ko/examples)
