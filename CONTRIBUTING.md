@@ -88,26 +88,32 @@ Pull Request 방식이 익숙하시지 않은 분들은 issue 로 내용을 등�
 ## 📝 템플릿 (예시)
 
 ### 📌 Pull Request Template
+
 ```md
 ### This Pull Request is...
-* [ ] Edit typos or links
-* [ ] Inaccurate information
-* [ ] New Resources
+
+- [ ] Edit typos or links
+- [ ] Inaccurate information
+- [ ] New Resources
 
 #### Description
+
 (say something...)
 ```
 
 ### 📌 Issue Template
+
 ```md
 ### This issue is...
-* [ ] Edit typos or links
-* [ ] Inaccurate information
-* [ ] New Resources
-* [ ] Suggestions
-* [ ] Questions
+
+- [ ] Edit typos or links
+- [ ] Inaccurate information
+- [ ] New Resources
+- [ ] Suggestions
+- [ ] Questions
 
 #### Description
+
 (say something...)
 ```
 
