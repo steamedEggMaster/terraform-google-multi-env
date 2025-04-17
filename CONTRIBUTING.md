@@ -74,7 +74,7 @@ Pull Request 방식이 익숙하시지 않은 분들은 issue 로 내용을 등�
 - Inaccurate information
   - 잘못된 정보에 대한 Fix.
 - New Resources
-  - 새로운 자료 추가
+  - 새로운 내용 추가
 
 ### 그 외 Labels
 
@@ -90,33 +90,40 @@ Pull Request 방식이 익숙하시지 않은 분들은 issue 로 내용을 등�
 ### 📌 Pull Request Template
 
 ```md
-### This Pull Request is...
+### 📌 Pull Request 내용
 
-- [ ] Edit typos or links
-- [ ] Inaccurate information
-- [ ] New Resources
+- [ ] 오타 또는 링크 수정
+- [ ] 잘못된 정보 수정
+- [ ] 문서/예제 추가
 
-#### Description
+#### ✨ 변경 사항 요약
 
-(say something...)
+<!-- 변경한 내용 간단히 정리해주세요 -->
+
+#### 📎 관련 이슈
+
+<!-- 관련된 이슈가 있다면 작성해주세요 -->
 ```
 
 ### 📌 Issue Template
 
-```md
-### This issue is...
+이슈 등록 시 아래 템플릿 중 하나를 선택하여 작성해주세요.  
+GitHub에서 "New Issue"를 클릭하면 직접 선택할 수 있습니다.
 
-- [ ] Edit typos or links
-- [ ] Inaccurate information
-- [ ] New Resources
-- [ ] Suggestions
-- [ ] Questions
+| 유형                       | 설명                                    |
+| -------------------------- | --------------------------------------- |
+| **Edit typos or links**    | 오타 또는 잘못된 링크 수정 제안         |
+| **Inaccurate information** | 잘못된 정보, 문서 내용에 대한 수정 요청 |
+| **New Resources**          | 새로운 문서, 링크, 코드 예제 추가 제안  |
+| **Suggestions**            | 기능 개선, 구조 변경 등 건의 사항 제안  |
+| **Questions**              | 사용 중 궁금한 점 문의                  |
 
-#### Description
+각 항목은 `.github/ISSUE_TEMPLATE/` 폴더에 템플릿으로 저장되어 있으며,  
+이슈 생성 시 자동으로 해당 템플릿 양식이 적용됩니다.
 
-(say something...)
 ```
 
 ---
 
 감사합니다! 프로젝트 발전에 함께해 주세요 😊
+```
