@@ -1,0 +1,42 @@
+network:
+  ${vpc_name_1}:
+    project_id: ${project_id}
+    network_name: ${vpc_name_1}
+    routing_mode: "REGIONAL"
+    auto_create_subnetworks: false
+    mtu: 1460
+    delete_default_internet_gateway_routes: false
+
+    subnets:
+      - subnet_name: ${subnet_name_1}
+        subnet_ip: "10.0.0.0/18"
+        subnet_region: ${region_1}
+        description: "dev vpc"
+        subnet_private_access: "true"
+        stack_type: "IPV4_ONLY"
+  
+    secondary_ranges:
+      ${subnet_name_1}:
+        - range_name: ${secondary_subnet_range_name_1}
+          ip_cidr_range: "10.48.0.0/14"
+        - range_name: ${secondary_subnet_range_name_2}
+          ip_cidr_range: "10.52.0.0/20"
+
+    ingress_rules:
+      - name: "allow-specific-ports-ssh"
+        description: "allow ssh"
+        source_ranges: 
+          - "0.0.0.0/0"
+        allow:
+          - protocol: "tcp"
+            ports:
+              - "22"
+      - name: "allow-specific-ports-http-https"
+        description: "allow http, https"
+        source_ranges: 
+          - "0.0.0.0/0"
+        allow:
+          - protocol: "tcp"
+            ports:
+              - "80"
+              - "443"

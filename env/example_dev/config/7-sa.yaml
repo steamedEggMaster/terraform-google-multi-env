@@ -1,0 +1,5 @@
+sa:
+  ${sa_key_1}:
+    project_id: ${project_id}
+    names:
+      - ${key_1_sa_name_1}

@@ -1,0 +1,6 @@
+k8s_namespace:
+  ${k8s_namespace_name_1}:
+    name: ${k8s_namespace_name_1}
+
+  ${k8s_namespace_name_2}:
+    name: ${k8s_namespace_name_2}

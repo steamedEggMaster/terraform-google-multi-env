@@ -1,0 +1,16 @@
+kubectl:
+# argocd
+  yaml/argocd/argocd-secret-manifest.yaml:
+    yaml_body: yaml/argocd/argocd-secret-manifest.yaml
+  yaml/argocd/argocd-project.yaml:
+    yaml_body: yaml/argocd/argocd-project.yaml
+
+# application
+## front
+### example-front
+  yaml/application/front/example-front.yaml:
+    yaml_body: yaml/application/front/example-front.yaml
+## back
+### example-back
+  yaml/application/back/example-back.yaml:
+    yaml_body: yaml/application/back/example-back.yaml

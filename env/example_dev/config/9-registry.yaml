@@ -1,0 +1,7 @@
+registry:
+  ${repository_id_1}:
+    project_id: ${project_id}
+    repository_id: ${repository_id_1}
+    location: ${region_1}
+    format: "DOCKER"
+    description: "dev-registry"

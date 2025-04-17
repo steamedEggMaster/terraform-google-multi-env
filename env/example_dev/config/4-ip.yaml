@@ -1,0 +1,11 @@
+ip:
+  ${ip_key_1}:
+    project_id: ${project_id}
+    region: ${region_1}
+    names: 
+      - ${ip_name_1}
+    descriptions:
+      - "nat ip address"
+    address_type: "EXTERNAL"
+    network_tier: "PREMIUM"
+    ip_version: "IPV4"

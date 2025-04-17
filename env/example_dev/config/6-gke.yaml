@@ -1,0 +1,50 @@
+gke:
+  ${gke_name_1}:
+    project_id: ${project_id}
+    name: ${gke_name_1}
+    regional: false
+    zones: 
+      - ${zone_1}
+    description: "dev gke cluster"
+    network: ${vpc_name_1}
+    subnetwork: ${subnet_name_1}
+
+    remove_default_node_pool: true
+    initial_node_count: 1
+
+    deletion_protection: false
+
+    create_service_account: true
+    service_account_name: "gkelogging"
+
+    logging_service: "none"
+    monitoring_service: "none"
+
+    http_load_balancing: false
+    horizontal_pod_autoscaling: true
+    gce_pd_csi_driver: true
+
+    release_channel: "REGULAR"
+
+    identity_namespace: "enabled"
+
+    ip_range_pods: ${secondary_subnet_range_name_1}
+    ip_range_services: ${secondary_subnet_range_name_2}
+
+    enable_private_nodes:  true
+    enable_private_endpoint: false
+    master_ipv4_cidr_block: "192.168.0.0/28"
+
+    node_pools:
+      - name: ${node_pool_name_1}
+        autoscaling: false
+        node_count: ${node_count_1}
+
+        auto_repair: true
+        auto_upgrade: true
+
+        preemptible: false
+        spot: false
+        machine_type: ${machine_type_1}
+        disk_size_gb: ${disk_size_gb_1}
+        create_service_account: false

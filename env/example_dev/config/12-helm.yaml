@@ -1,0 +1,13 @@
+helm:
+  argocd-helm:
+    name: ${helm_name_1}
+    repository: "https://argoproj.github.io/argo-helm"
+    chart: "argo-cd"
+    namespace: ${k8s_namespace_name_2}
+    max_history: 3
+    force_update: true
+    recreate_pods: true
+    set:
+      - name: "installCRDs"
+        value: "true"
+    values: "helm/argocd-values.yaml"

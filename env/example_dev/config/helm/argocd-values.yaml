@@ -1,0 +1,38 @@
+server:
+  service:
+    type: LoadBalancer
+    ports:
+      - name: http
+        port: 80
+        targetPort: 8080
+        protocol: TCP
+      - name: https
+        port: 443
+        targetPort: 8080
+        protocol: TCP
+        
+  repoServer:
+    volumes:
+      - name: custom-tools
+        emptyDir: {}
+    initContainers:
+      - name: download-tools
+        image: alpine:3.8
+        command: [sh, -c]
+        args:
+          - wget https://github.com/kubernetes-sigs/kustomize/releases/download/v3.2.0/kustomize_3.2.0_linux_amd64 &&
+            mv kustomize_3.2.0_linux_amd64 /custom-tools/kustomize_3.2.0 &&
+            chmod +x /custom-tools/kustomize_3.2.0
+        volumeMounts:
+          - mountPath: /custom-tools
+            name: custom-tools
+    volumeMounts:
+      - mountPath: /usr/local/bin/kustomize_3.2.0
+        name: custom-tools
+        subPath: kustomize_3.2.0
+  server:
+    config:
+      kustomize.path.v3.2.0: /usr/local/bin/kustomize_3.2.0
+configs:
+  secret:
+    argocdServerAdminPassword: <Admin Password>

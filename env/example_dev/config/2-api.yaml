@@ -1,0 +1,11 @@
+api:
+  ${project_id}:
+    project_id: ${project_id}
+    activate_apis:
+      - "cloudresourcemanager.googleapis.com"
+      - "serviceusage.googleapis.com"
+      - "compute.googleapis.com"
+      - "container.googleapis.com"
+      - "iam.googleapis.com"
+      - "storage.googleapis.com"
+      - "sqladmin.googleapis.com"

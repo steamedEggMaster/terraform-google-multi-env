@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: example-front
+  namespace: argocd
+spec:
+  project: <Project Name>
+  source:
+    repoURL: '<Github Manifest Repository HTTPS Address>'
+    targetRevision: <Target Branch>
+    path: <Path to Object YAML Folder>
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: <Target Namespace>

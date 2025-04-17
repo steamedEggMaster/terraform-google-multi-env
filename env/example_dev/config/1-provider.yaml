@@ -1,0 +1,6 @@
+provider:
+  main:
+    project: ${project_id}
+    region: ${region_1}
+    gke_name: ${gke_name_1}
+    gke_location: ${zone_1}

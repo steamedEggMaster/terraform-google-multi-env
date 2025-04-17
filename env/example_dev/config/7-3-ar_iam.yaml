@@ -1,0 +1,10 @@
+ar_iam:
+  for_pod_docker_image:
+    project: ${project_id}
+    repositories:
+      - ${repository_id_1}
+    location: ${region_1}
+    mode: additive
+    bindings:
+      "roles/artifactregistry.reader":
+        - "serviceAccount:${key_1_sa_name_1}@${project_id}.iam.gserviceaccount.com"

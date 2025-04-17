@@ -1,0 +1,15 @@
+nat:
+  ${nat_name_1}:
+    project_id: ${project_id}
+    create_router: true
+    router: ${router_name_1}
+    region: ${region_1}
+    name: ${nat_name_1}
+    network: ${vpc_name_1}
+    source_subnetwork_ip_ranges_to_nat: "LIST_OF_SUBNETWORKS"
+    ip_names:
+      - ${ip_name_1}
+    subnetworks:
+      - name: ${subnet_name_1}
+        source_ip_ranges_to_nat: 
+          - "ALL_IP_RANGES"

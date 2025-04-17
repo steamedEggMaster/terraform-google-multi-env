@@ -1,0 +1,6 @@
+k8s_sa:
+  ${key_1_sa_name_1}:
+    name: ${key_1_sa_name_1}
+    namespace: ${k8s_namespace_name_1}
+    annotations:
+      iam.gke.io/gcp-service-account : "${key_1_sa_name_1}@${project_id}.iam.gserviceaccount.com"

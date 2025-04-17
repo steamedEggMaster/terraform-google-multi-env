@@ -1,0 +1,9 @@
+sa_iam:
+  ${sa_iam_key_1}:
+    project: ${project_id}
+    service_accounts:
+      - "${key_1_sa_name_1}@${project_id}.iam.gserviceaccount.com"
+    mode: "additive"
+    bindings:
+      "roles/iam.workloadIdentityUser":
+        - "serviceAccount:${project_id}.svc.id.goog[${k8s_namespace_name_1}/${key_1_sa_name_1}]"
