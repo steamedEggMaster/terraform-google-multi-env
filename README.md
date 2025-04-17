@@ -17,7 +17,12 @@
 - [디렉터리 구조](#디렉터리-구조)
 - [실행 방법](#실행-방법)
 - [TF Docs](#tf-docs)
-   - [1. Requirements](#1-requirements)
+  - [1. Requirements](#1-requirements)
+  - [2. Providers](#2-providers)
+  - [3. Modules](#3-modules)
+  - [4. Resources](#4-resources)
+  - [5. Inputs](#5-inputs)
+  - [6. Outputs](#6-outputs)
 
 <br>
 <br>
@@ -246,7 +251,7 @@ terraform-google-multi-env/
 |---------|-------------|
 | terraform | >= 1.10.3 |
 
-#### 2. Providers
+### 2. Providers
 
 | Provider    | Source                 | Version     |
 |-------------|------------------------|-------------|
@@ -255,7 +260,7 @@ terraform-google-multi-env/
 | `helm`      | `hashicorp/helm`       | `~> 2.0`    |
 | `kubectl`   | `gavinbunney/kubectl`  | `~> 1.14`   |
 
-#### 3. Modules
+### 3. Modules
 
 | 모듈 이름              | 설명 |
 |------------------------|------|
@@ -271,7 +276,7 @@ terraform-google-multi-env/
 | `k8s_sa`               | Kubernetes ServiceAccount를 생성하는 모듈 |
 | `kubectl_manifest`     | Kubectl Provider를 사용해 k8s 리소스(YAML)를 배포하는 모듈 |
 
-#### 4. resources
+### 4. resources
 
 | 리소스 종류                    | 설명 |
 |-----------------------------|------|
@@ -279,7 +284,7 @@ terraform-google-multi-env/
 | `google_compute_instance`   | GCP VM 인스턴스 생성 리소스 |
 | `helm_release`              | Helm 차트를 Kubernetes에 배포하는 리소스 |
 
-#### 5. Inputs
+### 5. Inputs
 
 | 변수 이름      | 설명             | 타입    | 필수 여부 |
 |----------------|------------------|---------|-----------|
@@ -296,7 +301,7 @@ terraform-google-multi-env/
    필요한 값은 각 모듈의 변수 정의를 직접 확인하여,  <br>
    해당 스타일에 맞게 YAML 파일을 작성해주셔야 합니다. 
 
-#### 6. Outputs
+### 6. Outputs
 
 | 출력 변수              | 설명                                                   | 민감 정보 |
 |------------------------|--------------------------------------------------------|------------|
