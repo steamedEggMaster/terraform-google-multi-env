@@ -75,7 +75,7 @@ Terraform과 모듈에 대해 학습 후 직접 설계하고 인터넷을 참고
           등의 한계로 인하여 2번 방법 채택‼️
      
      2. **Terragrunt** <br>
-        - 직접 경험한 장점들
+        - ✨ 직접 경험한 장점들 ✨
           1. 사용할 Terraform 모듈을 경로 상으로 설정 <- 이 기능을 통해, 하나의 루트 모듈을 여러 환경이 공유 가능.
           2. 상태 파일 관리 환경별 개별화 가능.
           3. 상태 파일 이름에 변수 설정 가능 <- 동적인 이름 설정 기능을 사용하여 이후, `셸스크립트 기반 GCP 계정 이동 재구축 자동화` 수행.
@@ -84,13 +84,13 @@ Terraform과 모듈에 대해 학습 후 직접 설계하고 인터넷을 참고
 <br>
 
 3. GitOps 기반 리소스들을 제외하고, <br>
-   Kubernetes 생성과 동시에 필요한 리소스(예 : namespace, ingress-nginx, cert-manager 등)를 Terraform으로 생성한다.
+   Kubernetes 생성과 동시에 필요한 리소스(예 : namespace, ingress-nginx, cert-manager 등)를 **Terraform으로 생성**한다.
    - 기존에는 k8s 접속 후 직접 다운로드를 받고 설정해야 했음. ♨️ <br>
 
      - Helm, kubernetes Provider를 사용하여 자동화. <br>
        Terraform은 단순히 CSP 리소스만이 아닌, data 기반 GKE 연결을 통해 k8s 리소스도 생성이 가능. <br>
        => ✅ Argocd의 `CRD(Costum Resource Definition)`를 사용한다면, Application 배포까지 자동화 가능한 엄청난 기능‼️
-
+       - [data.tf로 이동하기](https://github.com/steamedEggMaster/terraform-google-multi-env/blob/main/terraform/data.tf)
 <br>
 
 4. 각 환경 별로 필요없는 모듈(YAML 파일)이 있기에, YAML 파일 존재 여부를 파악하고,
@@ -176,10 +176,13 @@ terraform-google-multi-env/
 # 실행 방법
 1. terraform을 설치한다.
    - [install terraform](https://developer.hashicorp.com/terraform/install)
+     
 2. terragrunt를 설치한다.
    - [install terragrunt](https://terragrunt.gruntwork.io/docs/getting-started/install/)
+     
 3. GCP CLI를 설치한다.
    - [install GCP CLI](https://cloud.google.com/sdk/docs/install?hl=ko)
+     
 4. Github Repository를 Clone 한다.
    ```
    git clone https://github.com/steamedEggMaster/terraform-google-multi-env.git
@@ -190,13 +193,13 @@ terraform-google-multi-env/
    1. GCP는 계정마다 무료 300달러를 제공한다. ▶️ 300달러 받기위한 설정을 수행한다.
 
    2. 새로운 프로젝트를 생성한다.
-      - 이때, 프로젝트 ID를 반드시 `1-provider.yaml`의 `project_id`와 동일하게 생성한다.
+      - 이때❗️, 프로젝트 ID를 반드시 `1-provider.yaml`의 `project_id`와 동일하게 생성한다.
 
    3. 생성된 프로젝트에 접속 후, Service Accounts 섹션으로 이동한다.
       - Service Account를 Owner 권한으로 생성 후, json credential key를 다운로드 받는다.
 
    4. GCS 섹션으로 이동하여 GCS를 생성한다.
-      - 이때, GCS 명은 반드시 `terragrunt.hcl`의 `bucket이름`과 동일해야 한다.
+      - 이때❗️, GCS 명은 반드시 `terragrunt.hcl`의 `bucket이름`과 동일해야 한다.
 
    5. ServiceUsage API 섹션으로 이동하여 API를 활성화 한다.
       - API Enabled 상태라면 넘어간다.
@@ -218,7 +221,7 @@ terraform-google-multi-env/
    terragrunt init
    ```
 
-10. terragrunt 실행 - 변경 사항 확인 후 apply‼️
+10. terragrunt 실행 - 반드시 변경 사항 확인 후 apply‼️
     1. GKE를 생성하는 경우
        ```
        terragrunt plan -target=module.private_cluster -out=tfplan
@@ -310,3 +313,12 @@ terraform-google-multi-env/
 | `database_ips`         | 생성된 데이터베이스의 Internal/External IP           | ❌         |
 | `db_cert`              | 데이터베이스 SSL 연결용 인증서 정보                  | ✅         |
 | `redis_master_ip`      | Redis Master 서비스의 External IP                     | ❌         |
+
+<br>
+<br>
+<br>
+
+# 참고 자료
+1. [Interview_Question_for_Beginner](https://github.com/jbee37142/Interview_Question_for_Beginner)
+2. [확장 가능한 테라폼 코드관리](https://www.youtube.com/watch?v=m9HeYtzeiLI)
+3. [Terraform 코드 중복•관리 복잡도 해결하기](https://insight.infograb.net/blog/2024/11/13/terragrunt/?utm_source=chatgpt.com)
