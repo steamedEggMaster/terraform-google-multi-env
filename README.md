@@ -17,7 +17,7 @@
 - [디렉터리 구조](#디렉터리-구조)
 - [실행 방법](#실행-방법)
 - [TF Docs](#tf-docs)
-   - [1. Requirements](1.-Requirements)
+   - [1. Requirements](1.-requirements)
 
 <br>
 <br>
