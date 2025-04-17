@@ -10,7 +10,7 @@ module "private_cluster" {
   gke     = try(each.value.gke, {})
 }
 
-module "sa" {
+module "service_account" {
   source = "git::https://github.com/GCP-Terraform-Module-steamedEggMaster/terraform-google-service-accounts.git?ref=v1.0.0"
 
   for_each = local.yaml.yaml_data.sa
@@ -49,7 +49,7 @@ module "service_account_iam" {
   #   ]
   # }
 
-  depends_on = [module.sa, module.k8s_sa]
+  depends_on = [module.service_account, module.k8s_sa]
 }
 
 module "artifact_registry_iam" {
@@ -69,7 +69,7 @@ module "artifact_registry_iam" {
   # "" = [
   # ]
 
-  depends_on = [module.sa, module.registry]
+  depends_on = [module.service_account, module.registry]
 }
 
 module "storage_bucket_iam" {
@@ -81,7 +81,7 @@ module "storage_bucket_iam" {
   mode            = try(each.value.mode, "additive")
   bindings        = try(each.value.bindings, {})
 
-  depends_on = [module.sa, module.bucket]
+  depends_on = [module.service_account, module.bucket]
 }
 
 module "database" {
@@ -114,13 +114,13 @@ module "database" {
   # retention_unit                 = optional(string)
   ip_configuration = try(each.value.ip_configuration, {})
   insights_config = try(each.value.insights_config, null) ## 설정하는 순간 true로 적용됨
-  ## ========= 추가로 알아보기 ============
-  # query_plans_per_minute  = optional(number, 5)
-  # query_string_length     = optional(number, 1024)
-  # record_application_tags = optional(bool, false)
-  # record_client_address   = optional(bool, false)
-  ## ==================================
-
+  # {
+  #   query_plans_per_minute  = optional(number, 5)
+  #   query_string_length     = optional(number, 1024)
+  #   record_application_tags = optional(bool, false)
+  #   record_client_address   = optional(bool, false)
+  # }
+  
   db_name    = try(each.value.db_name, "default")
   db_charset = try(each.value.db_charset, "") # 문자셋(문자 저장 방식)
 
