@@ -23,6 +23,7 @@
   - [4. Resources](#4-resources)
   - [5. Inputs](#5-inputs)
   - [6. Outputs](#6-outputs)
+- [참고 자료](#참고-자료)
 
 <br>
 <br>
