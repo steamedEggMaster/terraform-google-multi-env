@@ -141,6 +141,18 @@ Terraform과 모듈에 대해 학습 후 직접 설계하고 인터넷을 참고
 <br>
 <br>
 
+# 의문점
+
+1. Terraform과 CI-CD의 융합은 과연 좋은것인가 ❓❓
+   - Terraform의 장점은 `plan을 통해 변경 사항 확인`이 가능한것. <br>
+     하지만, Github Actions에서는 실행 도중에 입력을 받을 수 없기에 ⚠️ 바로 apply를 해야함. <br>
+     => 로컬에서 plan을 하고, CI-CD를 수행하면 되지 않는가? <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 그럴 것이라면, 로컬에서 apply 하는 것이 나음.
+
+     => ✅ Jenkins를 사용하면 가능❗️ <br>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 하지만, 그것만을 위해 사용하는 것은 `리소스 낭비`. <br>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 나중에 DevOps 엔지니어가 여러 명일때, `협업을 생각해보고 도입`하자. <br>
+
 # 디렉터리 구조
 
 ```
