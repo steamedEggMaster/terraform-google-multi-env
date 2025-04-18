@@ -85,9 +85,13 @@ Terraform과 모듈에 대해 학습 후 직접 설계하고 인터넷을 참고
      2. **Terragrunt** <br>
         - ✨ 직접 경험한 장점들 ✨
           1. 사용할 Terraform 루트 모듈을 `경로 상`으로 설정 <- 이 기능을 통해, 하나의 루트 모듈을 여러 환경이 `공유` 가능.
+            
           2. 상태 파일 관리 환경별 `개별화` 가능.
-          3. 상태 파일 이름에 `변수 설정` 가능 <- 동적인 이름 설정 기능을 사용하여 이후, `셸스크립트 기반 GCP 계정 이동 재구축 자동화` 수행.
-          4. terragrunt 실행을 위해선 `.hcl 파일이 위치한 폴더`가 _Working Directory_가 되어야 함. <br>
+             
+          4. 상태 파일 이름에 `변수 설정` 가능. <br>
+             => 동적인 이름 설정 기능을 사용하여 이후, `셸스크립트 기반 GCP 계정 이동 재구축 자동화` 수행.
+             
+          5. terragrunt 실행을 위해선 `.hcl 파일이 위치한 폴더`가 _Working Directory_ 가 되어야 함. <br>
              => 세션이 위치한 폴더가 곧 해당 환경이기에 환경 혼동 ⬇️
 
    - [참고 사이트 - Terraform 코드 중복•관리 복잡도 해결하기](https://insight.infograb.net/blog/2024/11/13/terragrunt/?utm_source=chatgpt.com)
