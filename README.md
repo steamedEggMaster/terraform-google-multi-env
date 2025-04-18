@@ -147,6 +147,7 @@ Terraform과 모듈에 대해 학습 후 직접 설계하고 인터넷을 참고
 1. `Terraform`과 `CI-CD`의 `융합`은 과연 좋은것인가 ❓❓
    - Terraform의 장점은 `plan을 통해 변경 사항 확인`이 가능한것. <br>
      하지만, `Github Actions`에서는 실행 도중에 입력을 받을 수 없기에 ⚠️ 바로 apply를 해야함. <br>
+     
      => `로컬에서 plan`을 하고, `CI-CD`를 수행하면 되지 않는가? <br>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 그럴 것이라면, 로컬에서 apply 하는 것이 나음.
 
