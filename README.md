@@ -32,7 +32,7 @@
 # What is This?
 
 이 프로젝트는 steamedEggMaster가 dev, prd 등 GCP 기반의 여러 환경들을 효율적으로 관리하기 위해 설계된 Terraform 모듈입니다. <br>
-`Child Module`들은 GCP에서 제공하는 공식 Terraform 모듈 깃허브를 Fork하여 사용하였으며, 🍴 <br>
+`Child Module`들은 GCP에서 제공하는 `공식 Terraform 모듈 깃허브`를 Fork하여 사용하였으며, 🍴 <br>
 그 외 kubernetes, helm Resource 등 단일 리소스들은 `Terraform Registry`를 활용하여 작성하였습니다. 📝 <br>
 Terraform과 모듈에 대해 학습 후 직접 설계하고 인터넷을 참고하여 만든 것이기에 실수가 많고 부족한 부분이 많습니다. <br>
 `Pull Request` or `Issue` 를 활용한 피드백은 정말정말 감사합니다. 😁
@@ -51,8 +51,8 @@ Terraform과 모듈에 대해 학습 후 직접 설계하고 인터넷을 참고
 
 1. `terraform.tfvars` 파일을 사용하지 않고 `variables.tf`에는 최소한의 내용만 담는다. <br>
 
-   - 기존에 사용하던 terraform.tfvars 파일은 가독성이 너무 떨어졌고 ⬇️, <br>
-     variables.tf 파일의 내용이 많으면 내용 파악이 쉽지 않았음.
+   - 기존에 사용하던 `terraform.tfvars` 파일은 가독성이 너무 떨어졌고 ⬇️, <br>
+     `variables.tf` 파일의 내용이 많으면 내용 파악이 쉽지 않았음.
 
      => ✅ YAML로 변수들을 리소스에 따라 파일로 나누어 관리하고, <br>
      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Terraform의 `yamldecode(templatefile())`로 **String Interpolation**을 이용하여 중복 변수들을 `한곳에서 관리`하자‼️ <br>
@@ -65,7 +65,7 @@ Terraform과 모듈에 대해 학습 후 직접 설계하고 인터넷을 참고
 
 2. 모든 환경은 하나의 Terraform 코드를 공유한다. <br>
 
-   - Best Practice를 확인한 결과, Terraform 코드 중복이 많다고 느껴졌음. <br>
+   - `Best Practice`를 확인한 결과, Terraform 코드 중복이 많다고 느껴졌음. <br>
      이는 환경 별 코드 일관성 유지 및 코드 변경 힘들게함. 😢 <br>
 
      => 2️⃣가지 해결 방법이 존재
