@@ -150,7 +150,7 @@ Terraform과 모듈에 대해 학습 후 직접 설계하고 인터넷을 참고
      => `로컬에서 plan`을 하고, `CI-CD`를 수행하면 되지 않는가? <br>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 그럴 것이라면, 로컬에서 apply 하는 것이 나음.
 
-     => ✅ `Jenkins`를 사용하면 CI-CD 실행 도중, 입력이 가능하다고함❗️ <br>
+     => ✅ `Jenkins`를 사용하면 CI-CD 실행 도중, `입력 가능`하다고함❗️ <br>
      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 하지만, 그것만을 위해 사용하는 것은 `리소스 낭비`. <br>
      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 나중에 DevOps 엔지니어가 여러 명일때, `협업을 생각해보고 도입`하자. <br>
 
