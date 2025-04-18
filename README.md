@@ -142,9 +142,11 @@ terraform-google-multi-env/
 │   │   │   ├── helm/
 │   │   │   │   ├── argocd-values.yaml
 │   │   │   │   └── ...
+│   │   │   │
 │   │   │   ├── yaml/
 │   │   │   │   ├── argocd/         # argocd CRD yaml 파일들 위치
 │   │   │   │   └── application/    # argocd application 파일들 위치
+│   │   │   │
 │   │   │   ├── 1-provider.yaml
 │   │   │   ├── 2-api.yaml
 │   │   │   ├── ...
@@ -152,11 +154,14 @@ terraform-google-multi-env/
 │   │   │   ├── 13-kubectl.yaml     # helm/, yaml/ 폴더 내부 yaml 파일들의 경로 지정
 │   │   │   └── context.yaml        # 공통 변수 관리 파일
 │   │   └── terragrunt.hcl          # 환경마다의 terragrunt 파일
+│   │
 │   ├── db/
 │   └── prd/
+│
 ├── modules/            # 자식 모듈
 │   ├── kuberentes/         # kubernetes 오브젝트 생성용 자식 모듈
 │   └── private_cluster/    # Network ~ GKE 생성까지의 자식 모듈
+│
 ├── terraform/          # 루트 모듈
 │   ├── backend,tf          # 백엔드 설정 파일 (설정 자체는 비어있음)
 │   ├── data,tf             # data 리소스 모음
@@ -169,8 +174,8 @@ terraform-google-multi-env/
 │   ├── outputs.tf          # DB IP 등 출력 변수 정의
 │   ├── providers.tf        # Terraform Provider 설정
 │   ├── variables.tf        # 입력 변수 정의
-│   ├── versions.tf         # Terraform 및 Provider 버전 고정
-│   ├── README.md
+│   └── versions.tf         # Terraform 및 Provider 버전 고정
+│
 ├── .gitignore
 ├── CONTRIBUTING.md
 ├── LICENSE
