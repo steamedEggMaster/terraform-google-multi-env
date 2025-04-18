@@ -62,7 +62,7 @@ Terraform과 모듈에 대해 학습 후 직접 설계하고 인터넷을 참고
      - ✨ 이렇게 하면 variables에 모든 변수에 대한 내용을 담을 필요없게됨 ✨.
 
    - [참고 유튜브 - 확장 가능한 테라폼 코드관리](https://www.youtube.com/watch?v=m9HeYtzeiLI)
-   - [context.yaml로 이동하기](https://github.com/steamedEggMaster/terraform-google-multi-env/blob/main/env/example_dev/config/context.yaml) - 중복 변수 관리 파일
+   - [context.yaml로 이동하기](https://github.com/steamedEggMaster/terraform-google-multi-env/blob/main/env/example_dev/config/context.yaml)(중복 변수 관리 파일)
 
 <br>
 
