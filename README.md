@@ -14,6 +14,7 @@
 
 - [What is this?](#what-is-this)
 - [개선점](#개선점)
+- [의문점](#의문점)
 - [디렉터리 구조](#디렉터리-구조)
 - [실행 방법](#실행-방법)
 - [TF Docs](#tf-docs)
@@ -73,7 +74,7 @@ Terraform과 모듈에 대해 학습 후 직접 설계하고 인터넷을 참고
 
      => 2️⃣가지 해결 방법이 존재
 
-     1. **Terraform Workspace** <br>
+     1. `Terraform Workspace` <br>
 
         - 기존에는 해당 방법으로 구축하려 했으나, <br>
 
@@ -82,7 +83,7 @@ Terraform과 모듈에 대해 학습 후 직접 설계하고 인터넷을 참고
 
           등의 한계로 인하여 2번 방법 채택‼️
 
-     2. **Terragrunt** <br>
+     2. `Terragrunt` <br>
         - ✨ 직접 경험한 장점들 ✨
           1. 사용할 Terraform 루트 모듈을 `경로 상`으로 설정 <- 이 기능을 통해, 하나의 루트 모듈을 여러 환경이 `공유` 가능.
             
@@ -143,15 +144,19 @@ Terraform과 모듈에 대해 학습 후 직접 설계하고 인터넷을 참고
 
 # 의문점
 
-1. Terraform과 CI-CD의 융합은 과연 좋은것인가 ❓❓
+1. `Terraform`과 `CI-CD`의 `융합`은 과연 좋은것인가 ❓❓
    - Terraform의 장점은 `plan을 통해 변경 사항 확인`이 가능한것. <br>
-     하지만, Github Actions에서는 실행 도중에 입력을 받을 수 없기에 ⚠️ 바로 apply를 해야함. <br>
-     => 로컬에서 plan을 하고, CI-CD를 수행하면 되지 않는가? <br>
+     하지만, `Github Actions`에서는 실행 도중에 입력을 받을 수 없기에 ⚠️ 바로 apply를 해야함. <br>
+     => `로컬에서 plan`을 하고, `CI-CD`를 수행하면 되지 않는가? <br>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 그럴 것이라면, 로컬에서 apply 하는 것이 나음.
 
-     => ✅ Jenkins를 사용하면 가능❗️ <br>
+     => ✅ `Jenkins`를 사용하면 CI-CD 실행 도중, 입력이 가능하다고함❗️ <br>
      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 하지만, 그것만을 위해 사용하는 것은 `리소스 낭비`. <br>
      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 나중에 DevOps 엔지니어가 여러 명일때, `협업을 생각해보고 도입`하자. <br>
+
+<br>
+<br>
+<br>
 
 # 디렉터리 구조
 
