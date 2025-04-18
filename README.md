@@ -95,6 +95,7 @@ Terraform과 모듈에 대해 학습 후 직접 설계하고 인터넷을 참고
              => 세션이 위치한 폴더가 곧 해당 환경이기에 환경 혼동 ⬇️
 
    - [참고 사이트 - Terraform 코드 중복•관리 복잡도 해결하기](https://insight.infograb.net/blog/2024/11/13/terragrunt/?utm_source=chatgpt.com)
+   - [terragrunt.hcl로 이동하기](https://github.com/steamedEggMaster/terraform-google-multi-env/blob/main/env/example_dev/terragrunt.hcl)
 
 <br>
 
