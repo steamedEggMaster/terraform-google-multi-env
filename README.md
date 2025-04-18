@@ -154,10 +154,10 @@ terraform-google-multi-env/
 │   │   └── terragrunt.hcl          # 환경마다의 terragrunt 파일
 │   ├── db/
 │   └── prd/
-├── modules/
+├── modules/            # 자식 모듈
 │   ├── kuberentes/         # kubernetes 오브젝트 생성용 자식 모듈
 │   └── private_cluster/    # Network ~ GKE 생성까지의 자식 모듈
-├── terraform/
+├── terraform/          # 루트 모듈
 │   ├── backend,tf          # 백엔드 설정 파일 (설정 자체는 비어있음)
 │   ├── data,tf             # data 리소스 모음
 │   ├── locals.tf           # 로컬 변수 정의
