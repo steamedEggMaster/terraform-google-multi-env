@@ -52,7 +52,7 @@ Terraform과 모듈에 대해 학습 후 직접 설계하고 인터넷을 참고
 1. `terraform.tfvars` 파일을 사용하지 않고 `variables.tf`에는 최소한의 내용만 담는다. <br>
 
    - 기존에 사용하던 `terraform.tfvars` 파일은 가독성이 너무 떨어졌고 ⬇️, <br>
-     `variables.tf` 파일의 내용이 많으면 내용 파악이 쉽지 않았음.
+     `variables.tf` 파일의 내용이 많으면 파악이 쉽지 않았음.
 
      => ✅ YAML로 변수들을 리소스에 따라 파일로 나누어 관리하고, <br>
      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Terraform의 `yamldecode(templatefile())`로 **String Interpolation**을 이용하여 중복 변수들을 `한곳에서 관리`하자‼️ <br>
