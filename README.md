@@ -31,7 +31,8 @@
 
 # What is This?
 
-이 프로젝트는 steamedEggMaster가 dev, prd 등 GCP 기반의 여러 환경들을 효율적으로 관리하기 위해 설계된 Terraform 모듈입니다. <br>
+이 프로젝트는 steamedEggMaster가 dev, prd 등 GCP 기반의 여러 환경들을 <br>
+효율적으로 관리하기 위해 설계된 Terraform 모듈입니다. <br>
 `Child Module`들은 GCP에서 제공하는 `공식 Terraform 모듈 깃허브`를 Fork하여 사용하였으며, 🍴 <br>
 그 외 kubernetes, helm Resource 등 단일 리소스들은 `Terraform Registry`를 활용하여 작성하였습니다. 📝 <br>
 Terraform과 모듈에 대해 학습 후 직접 설계하고 인터넷을 참고하여 만든 것이기에 실수가 많고 부족한 부분이 많습니다. <br>
@@ -55,11 +56,13 @@ Terraform과 모듈에 대해 학습 후 직접 설계하고 인터넷을 참고
      `variables.tf` 파일의 내용이 많으면 파악이 쉽지 않았음.
 
      => ✅ YAML로 변수들을 리소스에 따라 파일로 나누어 관리하고, <br>
-     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Terraform의 `yamldecode(templatefile())`로 **String Interpolation**을 이용하여 중복 변수들을 `한곳에서 관리`하자‼️ <br>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Terraform의 `yamldecode(templatefile())`로 <br>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **String Interpolation**을 이용하여 중복 변수들을 `한곳에서 관리`하자‼️ <br>
 
      - ✨ 이렇게 하면 variables에 모든 변수에 대한 내용을 담을 필요없게됨 ✨.
 
    - [참고 유튜브 - 확장 가능한 테라폼 코드관리](https://www.youtube.com/watch?v=m9HeYtzeiLI)
+   - [context.yaml로 이동하기](https://github.com/steamedEggMaster/terraform-google-multi-env/blob/main/env/example_dev/config/context.yaml) - 중복 변수 관리 파일
 
 <br>
 
