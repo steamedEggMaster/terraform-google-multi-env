@@ -138,7 +138,7 @@ Terraform과 모듈에 대해 학습 후 직접 설계하고 인터넷을 참고
 terraform-google-multi-env/
 ├── env/
 │   ├── dev/
-│   │   ├── config/                  # yaml 파일들 위치
+│   │   ├── config/                 # yaml 파일들 위치
 │   │   │   ├── helm/
 │   │   │   │   ├── argocd-values.yaml
 │   │   │   │   └── ...
