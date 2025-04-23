@@ -364,7 +364,7 @@ terraform-google-multi-env/
 
 2. 이 프로젝트는 `yamldecode()`를 기반으로 리소스를 구성하기 때문에, <br>
    대부분의 변수는 `Inputs` 항목에 정의되어 있지 않습니다‼️ <br>
-   필요한 값은 각 모듈의 변수 정의를 직접 확인하여, <br>
+   필요한 값은 각 모듈의 `variables` 정의를 직접 확인하여, <br>
    해당 스타일에 맞게 YAML 파일을 작성해야 합니다‼️
 
 ### 6. Outputs
