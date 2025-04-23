@@ -63,7 +63,7 @@ Terraform과 모듈에 대해 학습 후 직접 설계하고 인터넷을 참고
      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Terraform의 `yamldecode(templatefile())`로 <br>
      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **String Interpolation**을 이용하여 중복 변수들을 `한곳에서 관리`하자‼️ <br>
 
-     - ✨ 이렇게 하면 variables에 모든 변수에 대한 내용을 담을 필요없게됨 ✨.
+     - ✨ 이렇게 하면 variables에 모든 변수에 대한 내용을 담을 필요없게되며, 가독성 향상 ✨.
 
    - [참고 유튜브 - 확장 가능한 테라폼 코드관리](https://www.youtube.com/watch?v=m9HeYtzeiLI)
    - [context.yaml로 이동하기](https://github.com/steamedEggMaster/terraform-google-multi-env/blob/main/env/example_dev/config/context.yaml)(중복 변수 관리 파일)
@@ -78,6 +78,7 @@ Terraform과 모듈에 대해 학습 후 직접 설계하고 인터넷을 참고
      => 2️⃣가지 해결 방법이 존재
 
      1. `Terraform Workspace` <br>
+        : `동일한 코드베이스`로 여러 환경을 분리해 관리할 수 있게 해주는 Terraform의 `내장 기능`.
 
         - 기존에는 해당 방법으로 구축하려 했으나, <br>
 
@@ -86,7 +87,9 @@ Terraform과 모듈에 대해 학습 후 직접 설계하고 인터넷을 참고
 
           등의 한계로 인하여 2번 방법 채택‼️
 
-     2. `Terragrunt` <br>
+     3. `Terragrunt` <br>
+        : Terraform 설정을 모듈화하고 환경별 구성과 반복을 쉽게 관리하도록 도와주는 Wrapper 도구.
+     
         - ✨ 직접 경험한 장점들 ✨
           1. 사용할 Terraform 루트 모듈을 `경로 상`으로 설정 <br>
              => 이 기능을 통해, 하나의 루트 모듈을 여러 환경이 `공유` 가능.
