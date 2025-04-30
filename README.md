@@ -145,7 +145,20 @@ Terraform과 모듈에 대해 학습 후 직접 설계하고 인터넷을 참고
      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `Terragrunt plan -out=tfplan` 를 실행한다.
 
      - [main.tf로 이동하기](https://github.com/steamedEggMaster/terraform-google-multi-env/blob/main/terraform/main.tf)
+    
+<br>
 
+6. Terraform Helm으로 만들어진 LoadBalancer IP들을 Output으로 가져온다.
+
+   - Ingress Controller 외부 IP 같은 도메인 연결에 필요한 데이터를 가져오기 위해, <br>
+     매번 `gcloud CLI`로 접속 및 `kubectl get svc -n ingress-nginx`로 가져오는 것은 번거로운 작업.
+     - Ingress 이외에도 여러 서비스의 외부 IP를 가져올 수 있음.(ex Redis)
+
+     => ✅ `kubernetes_service Data` 리소스를 활용하여, <br>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; IP값을 가져온 후, Output을 통해 출력하자!
+
+     - [data.tf로 이동하기](https://github.com/steamedEggMaster/terraform-google-multi-env/blob/main/terraform/data.tf)
+   
 <br>
 <br>
 <br>
