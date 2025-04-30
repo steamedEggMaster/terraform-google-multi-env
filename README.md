@@ -148,7 +148,7 @@ Terraform과 모듈에 대해 학습 후 직접 설계하고 인터넷을 참고
     
 <br>
 
-6. Terraform Helm으로 만들어진 LoadBalancer IP들을 Output으로 가져온다.
+6. `서비스 외부 IP들`을 `Output으로 출력`한다.
 
    - Ingress Controller 외부 IP 같은 도메인 연결에 필요한 데이터를 가져오기 위해, <br>
      매번 `gcloud CLI`로 접속 및 `kubectl get svc -n ingress-nginx`로 가져오는 것은 번거로운 작업.
