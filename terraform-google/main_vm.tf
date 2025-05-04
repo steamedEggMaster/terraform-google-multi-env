@@ -80,5 +80,5 @@ resource "google_compute_instance" "this" {
     ignore_changes = [metadata_startup_script]
   }
 
-  depends_on = [module.private_cluster, module.service_account]
+  depends_on = [module.private_cluster, module.sa]
 }
