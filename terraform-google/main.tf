@@ -1,5 +1,5 @@
 module "private_cluster" {
-  source = "../../../../../modules/gcp/private-cluster"
+  source = "../../../../../modules/gcp/private_cluster"
 
   for_each = local.yaml
 
