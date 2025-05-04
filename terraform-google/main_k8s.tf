@@ -11,7 +11,7 @@ module "k8s_namespace" {
 }
 
 module "k8s_sa" {
-  source = "../../../../../modules/kubernetes/service_account"
+  source = "../../../../../modules/kubernetes/service-account"
 
   for_each = local.yaml.yaml_data.k8s_sa
 
