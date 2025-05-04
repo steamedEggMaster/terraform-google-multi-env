@@ -216,6 +216,13 @@ module "gke" {
   #   },
   # ]
 
+  node_pools_tags = try(merge(
+    {
+      all = try(each.value.node_pools_tags.all, [])
+    },
+    try(each.value.node_pools_tags.node_pools, {})
+  ))
+
   node_pools_oauth_scopes = try(merge(
     {
       all = try(each.value.node_pools_oauth_scopes.all, [])

@@ -166,6 +166,11 @@ variable "gke" {
       }))), {})
     }), {})
 
+    node_pools_tags = optional(object({
+      all        = optional(list(string), [])
+      node_pools = optional(map(list(string)), {})
+    }), {})
+
     node_pools_oauth_scopes = optional(object({
       all        = optional(list(string), [])
       node_pools = optional(map(list(string)), {})
