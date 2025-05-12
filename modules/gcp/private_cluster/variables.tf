@@ -104,6 +104,8 @@ variable "gke" {
     service_account        = optional(string, "")
     service_account_name   = optional(string, "")
 
+    monitoring_enable_managed_prometheus = optional(bool, false)
+
     logging_service    = optional(string, "none")
     monitoring_service = optional(string, "none")
 

@@ -126,6 +126,8 @@ module "gke" {
   service_account        = try(each.value.service_account, "")
   service_account_name   = try(each.value.service_account_name, "")
 
+  monitoring_enable_managed_prometheus = try(each.value.monitoring_enable_managed_prometheus, false)
+
   ## google logging service 차단 -> 금액 절약 -> Prometheus 사용
   ## 이걸 차단해도, 모듈에서 제공하는 service account가 생성되면 로깅을 보냄. (위의 argument)
   logging_service    = try(each.value.logging_service, "logging.googleapis.com/kubernetes")       ## none
