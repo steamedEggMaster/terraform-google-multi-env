@@ -27,6 +27,7 @@ variable "network" {
       description           = optional(string, "")
       subnet_private_access = optional(string, "false")
       stack_type            = optional(string, "IPV4_ONLY")
+      ipv6_access_type      = optional(string, null)
     })), [])
 
     secondary_ranges = optional(map(list(object({
@@ -34,11 +35,33 @@ variable "network" {
       ip_cidr_range = string
     }))), {})
 
-    ingress_rules = optional(list(object({
-      name          = string
-      description   = optional(string, "")
-      source_ranges = optional(list(string), [])
+    egress_rules = optional(list(object({
+      name               = string
+      description        = optional(string, "")
+      priority           = optional(number, null)
+      destination_ranges = optional(list(string), [])
+      source_ranges      = optional(list(string), [])
       allow = optional(list(object({
+        protocol = string
+        ports    = optional(list(string), [])
+      })), [])
+      deny = optional(list(object({
+        protocol = string
+        ports    = optional(list(string), [])
+      })), [])
+    })), [])
+
+    ingress_rules = optional(list(object({
+      name               = string
+      description        = optional(string, "")
+      priority           = optional(number, null)
+      destination_ranges = optional(list(string), [])
+      source_ranges      = optional(list(string), [])
+      allow = optional(list(object({
+        protocol = string
+        ports    = optional(list(string), [])
+      })), [])
+      deny = optional(list(object({
         protocol = string
         ports    = optional(list(string), [])
       })), [])
@@ -109,6 +132,8 @@ variable "gke" {
     logging_service    = optional(string, "none")
     monitoring_service = optional(string, "none")
 
+    enable_l4_ilb_subsetting = optional(bool, false)
+
     http_load_balancing        = optional(bool, false)
     horizontal_pod_autoscaling = optional(bool, true)
     gce_pd_csi_driver          = optional(bool, true)
@@ -117,8 +142,16 @@ variable "gke" {
 
     identity_namespace = optional(string, "enabled")
 
+    datapath_provider = optional(string, "DATAPATH_PROVIDER_UNSPECIFIED")
+
     ip_range_pods     = string
     ip_range_services = string
+    stack_type        = optional(string, "IPV4")
+
+    cluster_dns_provider          = optional(string, "PROVIDER_UNSPECIFIED")
+    cluster_dns_scope             = optional(string, "DNS_SCOPE_UNSPECIFIED")
+    cluster_dns_domain            = optional(string, "")
+    additive_vpc_scope_dns_domain = optional(string, "")
 
     enable_private_nodes    = optional(bool, true)
     enable_private_endpoint = optional(bool, false)

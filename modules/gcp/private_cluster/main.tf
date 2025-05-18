@@ -29,6 +29,7 @@ module "network" {
     description           = try(subnet.description, "")
     subnet_private_access = try(subnet.subnet_private_access, "false")
     stack_type            = try(subnet.stack_type, "IPV4_ONLY")
+    ipv6_access_type      = try(subnet.ipv6_access_type, null)
   }]
   ## 객체 안, key = list 구조...
   secondary_ranges = try(each.value.secondary_ranges, {})
@@ -38,13 +39,35 @@ module "network" {
   #     },
   #   ]
 
+  egress_rules = [for egress_rule in try(each.value.egress_rules, []) : {
+    name               = egress_rule.name
+    description        = try(egress_rule.description, "")
+    priority           = try(egress_rule.priority, null)
+    destination_ranges = try(egress_rule.destination_ranges, [])
+    source_ranges      = try(egress_rule.source_ranges, [])
+    allow = [for allow in try(egress_rule.allow, []) : {
+      protocol = allow.protocol
+      ports    = try(allow.ports, [])
+    }]
+    deny = [for deny in try(egress_rule.deny, []) : {
+      protocol = deny.protocol
+      ports    = try(deny.ports, [])
+    }]
+  }]
+
   ingress_rules = [for ingress_rule in try(each.value.ingress_rules, []) : {
-    name          = ingress_rule.name
-    description   = try(ingress_rule.description, "")
-    source_ranges = try(ingress_rule.source_ranges, [])
+    name               = ingress_rule.name
+    description        = try(ingress_rule.description, "")
+    priority           = try(ingress_rule.priority, null)
+    destination_ranges = try(ingress_rule.destination_ranges, [])
+    source_ranges      = try(ingress_rule.source_ranges, [])
     allow = [for allow in try(ingress_rule.allow, []) : {
       protocol = allow.protocol
       ports    = try(allow.ports, [])
+    }]
+    deny = [for deny in try(ingress_rule.deny, []) : {
+      protocol = deny.protocol
+      ports    = try(deny.ports, [])
     }]
   }]
 
@@ -133,6 +156,8 @@ module "gke" {
   logging_service    = try(each.value.logging_service, "logging.googleapis.com/kubernetes")       ## none
   monitoring_service = try(each.value.monitoring_service, "monitoring.googleapis.com/kubernetes") ## none
 
+  enable_l4_ilb_subsetting = try(each.value.enable_l4_ilb_subsetting, false)
+
   ## addons_config
   http_load_balancing        = try(each.value.http_load_balancing, true)
   horizontal_pod_autoscaling = try(each.value.horizontal_pod_autoscaling, true)
@@ -144,9 +169,17 @@ module "gke" {
   ## Workload Identity
   identity_namespace = try(each.value.identity_namespace, "enabled") ## "enabled" 이면 {project_id}.svc.id.goog 형식 사용 
 
+  datapath_provider = try(each.value.datapath_provider, "DATAPATH_PROVIDER_UNSPECIFIED")
+
   ## ip_allocation_policy 필수 설정!
   ip_range_pods     = each.value.ip_range_pods
   ip_range_services = each.value.ip_range_services
+  stack_type        = try(each.value.stack_type, "IPV4")
+
+  cluster_dns_provider          = try(each.value.cluster_dns_provider, "PROVIDER_UNSPECIFIED")
+  cluster_dns_scope             = try(each.value.cluster_dns_scope, "DNS_SCOPE_UNSPECIFIED")
+  cluster_dns_domain            = try(each.value.cluster_dns_domain, "")
+  additive_vpc_scope_dns_domain = try(each.value.additive_vpc_scope_dns_domain, "")
 
   ## private_cluster_config
   enable_private_nodes    = try(each.value.enable_private_nodes, true)
