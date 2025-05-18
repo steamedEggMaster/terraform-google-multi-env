@@ -117,7 +117,7 @@ Terraform과 모듈에 대해 학습 후 직접 설계하고 인터넷을 참고
              Terraform은 단순히 CSP 리소스만이 아닌, data 기반 GKE 연결을 통해 k8s 리소스도 생성이 가능. <br>
              =>  ✅  Argocd의 `CRD(Custom Resource Definition)`를 사용한다면, Application 배포까지 자동화 가능한 엄청난 기능‼️ <br>
              
-         - [providers.tf로 이동하기](https://github.com/steamedEggMaster/terraform-google-multi-env/blob/main/terraform/providers.tf)
+         - [providers.tf로 이동하기](https://github.com/steamedEggMaster/terraform-google-multi-env/blob/main/terraform-google/providers.tf)
 
 <br>
 
