@@ -131,7 +131,7 @@ Terraform과 모듈에 대해 학습 후 직접 설계하고 인터넷을 참고
          - YAML은 key-value 형태의 object 타입 그 자체이기에, 사용하기 적합. <br>
            => ✅ locals.tf에서 `중첩 3항 연산자`를 통해, 4번 목표를 안전하게 **fallback** 가능.
 
-         - [locals.tf로 이동하기](https://github.com/steamedEggMaster/terraform-google-multi-env/blob/main/terraform/locals.tf)
+         - [locals.tf로 이동하기](https://github.com/steamedEggMaster/terraform-google-multi-env/blob/main/terraform-google/locals.tf)
 
 <br>
 
@@ -144,7 +144,7 @@ Terraform과 모듈에 대해 학습 후 직접 설계하고 인터넷을 참고
      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `terragrunt plan -target=module.private_cluster -out=tfplan` 실행하고 <br>
      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `Terragrunt plan -out=tfplan` 를 실행한다.
 
-     - [main.tf로 이동하기](https://github.com/steamedEggMaster/terraform-google-multi-env/blob/main/terraform/main.tf)
+     - [main.tf로 이동하기](https://github.com/steamedEggMaster/terraform-google-multi-env/blob/main/terraform-google/main.tf)
     
 <br>
 
@@ -157,7 +157,7 @@ Terraform과 모듈에 대해 학습 후 직접 설계하고 인터넷을 참고
      => ✅ `kubernetes_service Data` 리소스를 활용하여, <br>
      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; IP값을 가져온 후, Output을 통해 출력하자!
 
-     - [data.tf로 이동하기](https://github.com/steamedEggMaster/terraform-google-multi-env/blob/main/terraform/data.tf)
+     - [data.tf로 이동하기](https://github.com/steamedEggMaster/terraform-google-multi-env/blob/main/terraform-google/data.tf)
    
 <br>
 <br>
