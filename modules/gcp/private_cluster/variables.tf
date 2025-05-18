@@ -42,7 +42,7 @@ variable "network" {
         protocol = string
         ports    = optional(list(string), [])
       })), [])
-    })))
+    })), [])
   }))
   default = {}
 }
