@@ -59,7 +59,7 @@ Terraform과 모듈에 대해 학습 후 직접 설계하고 인터넷을 참고
    - 기존에 사용하던 `terraform.tfvars` 파일은 가독성이 너무 떨어졌고 ⬇️, <br>
      `variables.tf` 파일의 내용이 많으면 파악이 쉽지 않았음.
 
-     => ✅ YAML로 변수들을 리소스에 따라 파일로 나누어 관리하고, <br>
+     => ✅ 개발자 친화적인 YAML로 변수들을 리소스에 따라 파일로 나누어 관리하고, <br>
      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Terraform의 `yamldecode(templatefile())`로 <br>
      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **String Interpolation**을 이용하여 중복 변수들을 `한곳에서 관리`하자‼️ <br>
 
@@ -84,7 +84,7 @@ Terraform과 모듈에 대해 학습 후 직접 설계하고 인터넷을 참고
         - 기존에는 해당 방법으로 구축하려 했으나, <br>
 
           1. 상태 파일 하나에서 모든 환경의 상태를 관리해야 하는 문제 <br>
-          2. 실수로 환경 변경 없이 CLI 실행할 수 있는 문제(코드로 환경을 확인해야 함) <br>
+          2. 실수로 환경 변경 없이 CLI 실행할 수 있는 문제(CLI 명령어 기반 수동적으로 환경을 확인해야 함) <br>
 
           등의 한계로 인하여 2번 방법 채택‼️
 
