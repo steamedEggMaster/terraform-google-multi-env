@@ -111,7 +111,7 @@ Terraform과 모듈에 대해 학습 후 직접 설계하고 인터넷을 참고
 3.  GitOps 기반 리소스들을 제외하고, <br>
     Kubernetes 생성과 동시에 필요한 리소스(예 : namespace, ingress-nginx, cert-manager 등)를 **Terraform으로 생성**한다.
 
-    - 기존에는 k8s 접속 후 직접 다운로드를 받고 설정해야 했음. ♨️ <br>
+    - 기존에는 k8s 접속 후 직접 다운로드를 받고 실행하는 등 수동적 작업이 존재. ♨️ <br>
 
        - `Helm, kubernetes Provider`를 사용하여 자동화. <br>
              Terraform은 단순히 CSP 리소스만이 아닌, data 기반 GKE 연결을 통해 k8s 리소스도 생성이 가능. <br>
