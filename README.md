@@ -59,24 +59,23 @@ Terraform과 모듈에 대해 학습 후 직접 설계하고 인터넷을 참고
    - 기존에 사용하던 `terraform.tfvars` 파일은 가독성이 너무 떨어졌고 ⬇️, <br>
      `variables.tf` 파일의 내용이 많으면 파악이 쉽지 않았음.
 
-     => ✅ 개발자 친화적인 YAML로 변수들을 리소스에 따라 파일로 나누어 관리하고, <br>
-     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Terraform의 `yamldecode(templatefile())`로 <br>
-     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **String Interpolation**을 이용하여 중복 변수들을 `한곳에서 관리`하자‼️ <br>
+     => 1️⃣ 개발자 친화적인 YAML에 리소스 관련 변수를 담고, <br>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2️⃣ *String Interpolation**을 이용하여 중복 변수들을 `하나의 YAML 파일에서 관리`하자‼️ <br>
 
-     - ✨ 이렇게 하면 variables에 모든 변수에 대한 내용을 담을 필요없게되며, <br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; yaml 사용으로 인해 가독성 향상됨. ✨.
+     - ✨ 가독성 크게 향상됨. ✨.
 
    - [참고 유튜브 - 확장 가능한 테라폼 코드관리](https://www.youtube.com/watch?v=m9HeYtzeiLI)
-   - [context.yaml로 이동하기](https://github.com/steamedEggMaster/terraform-google-multi-env/blob/main/env/example_dev/config/context.yaml)(중복 변수 관리 파일)
+   - [6-gke.yaml로 이동하기](https://github.com/steamedEggMaster/terraform-google-multi-env/blob/main/env/example_dev/config/6-gke.yaml)(1️⃣ YAML 리소스 관리 파일)
+   - [context.yaml로 이동하기](https://github.com/steamedEggMaster/terraform-google-multi-env/blob/main/env/example_dev/config/context.yaml)(2️⃣ 중복 변수 관리 파일)
 
 <br>
 
 2. 모든 환경은 하나의 Terraform 코드를 공유한다. <br>
 
-   - `Best Practice`를 확인한 결과, Terraform 코드 중복이 많다고 느껴졌음. <br>
-     이는 환경 별 코드 일관성 유지 및 코드 변경 힘들게함. 😢 <br>
+   - `Best Practice`에 나온 예시에는 환경별 Terraform 코드 중복이 많다는 것을 확인. <br>
+     이는 코드 유지보수성 감소시킴 ⬇️. 😢 <br>
 
-     => 2️⃣가지 해결 방법이 존재
+     => 2️⃣가지 해결 방법이 존재.
 
      1. `Terraform Workspace` <br>
         : `동일한 코드베이스`로 여러 환경을 분리해 관리할 수 있게 해주는 Terraform의 `내장 기능`.
@@ -84,24 +83,24 @@ Terraform과 모듈에 대해 학습 후 직접 설계하고 인터넷을 참고
         - 기존에는 해당 방법으로 구축하려 했으나, <br>
 
           1. 상태 파일 하나에서 모든 환경의 상태를 관리해야 하는 문제 <br>
-          2. 실수로 환경 변경 없이 CLI 실행할 수 있는 문제(CLI 명령어 기반 수동적으로 환경을 확인해야 함) <br>
+          2. 실수로 잘못된 환경에 명령어를 실행할 수 있는 문제(CLI 명령어 기반 수동적으로 환경을 확인해야 함) <br>
 
-          등의 한계로 인하여 2번 방법 채택‼️
+          등의 한계로 인하여 `2번 방법` 채택‼️
 
      3. `Terragrunt` <br>
         : Terraform 설정을 모듈화하고 환경별 구성과 반복을 쉽게 관리하도록 도와주는 `Wrapper 도구`.
      
         - ✨ 직접 경험한 장점들 ✨
-          1. 사용할 Terraform 루트 모듈을 `경로 상`으로 설정 <br>
+          1. 사용할 Terraform 루트 모듈을 `경로`로 설정 <br>
              => 이 기능을 통해, 하나의 루트 모듈을 여러 환경이 `공유` 가능.
             
-          3. 상태 파일 관리 환경별 `개별화` 가능.
+          3. 상태 파일을 환경별 `개별화` 가능.
              
           4. 상태 파일 이름에 `변수 설정` 가능. <br>
              => 동적인 이름 설정 기능을 사용하여 이후, `셸스크립트 기반 GCP 계정 이동 재구축 자동화` 수행.
              
-          5. terragrunt 실행을 위해선 `.hcl 파일이 위치한 폴더`가 _Working Directory_ 가 되어야 함. <br>
-             => 세션이 위치한 폴더가 곧 해당 환경이기에 환경 혼동 ⬇️
+          5. terragrunt 실행을 위해 `.hcl 파일이 위치한 폴더`가 `Working Directory` 가 되어야 함. <br>
+             => 세션이 위치한 폴더 == 해당 환경이기에 환경 혼동 ⬇️
 
    - [참고 사이트 - Terraform 코드 중복•관리 복잡도 해결하기](https://insight.infograb.net/blog/2024/11/13/terragrunt/?utm_source=chatgpt.com)
    - [terragrunt.hcl로 이동하기](https://github.com/steamedEggMaster/terraform-google-multi-env/blob/main/env/example_dev/terragrunt.hcl)
@@ -109,29 +108,35 @@ Terraform과 모듈에 대해 학습 후 직접 설계하고 인터넷을 참고
 <br>
 
 3.  GitOps 기반 리소스들을 제외하고, <br>
-    Kubernetes 생성과 동시에 필요한 리소스(예 : namespace, ingress-nginx, cert-manager 등)를 **Terraform으로 생성**한다.
+    Kubernetes 생성과 동시에 필요한 리소스 <br>
+    (예 : namespace, ingress-nginx, cert-manager 등)를 **Terraform으로 생성**한다.
 
-    - 기존에는 k8s 접속 후 직접 다운로드를 받고 실행하는 등 수동적 작업이 존재. ♨️ <br>
+    - 기존에는 직접 다운로드 및 명령어 실행 등 수동적 작업이 존재. ♨️ <br>
 
        - `Helm, kubernetes Provider`를 사용하여 자동화. <br>
-             Terraform은 단순히 CSP 리소스만이 아닌, data 기반 GKE 연결을 통해 k8s 리소스도 생성이 가능. <br>
-             =>  ✅  Argocd의 `CRD(Custom Resource Definition)`를 사용한다면, Application 배포까지 자동화 가능한 엄청난 기능‼️ <br>
-             
-         - [providers.tf로 이동하기](https://github.com/steamedEggMaster/terraform-google-multi-env/blob/main/terraform-google/providers.tf)
+             Terraform은 단순히 클라우드 리소스만이 아닌, <br> 
+             data 리소스 기반 GKE 연결을 통해 k8s 리소스도 생성 가능. <br>
+         
+       - Argocd의 `CRD(Custom Resource Definition)`를 사용한다면, <br> 
+         Application 배포까지 자동화 가능한 엄청난 기능‼️ <br>
+
+   - [providers.tf로 이동하기](https://github.com/steamedEggMaster/terraform-google-multi-env/blob/main/terraform-google/providers.tf)
+   - [main_kubect.tf로 이동하기](https://github.com/steamedEggMaster/terraform-google-multi-env/blob/main/terraform-google/main_kubectl.tf)(k8s 리소스 실행 파일)
+   - [13-kubectl.yaml로 이동하기](https://github.com/steamedEggMaster/terraform-google-multi-env/blob/main/env/example_dev/config/13-kubectl.yaml)(k8s 리소스 정의 파일)
 
 <br>
 
-4.  각 환경 별로 필요없는 모듈(YAML 파일)이 있기에, YAML 파일 존재 여부를 파악하고, <br>
-    파일은 있더라도, 주석 처리를 통해 리소스 생성을 방지해도 문제 없도록 한다.
+4.  각 환경 별로 필요한 리소스(YAML 파일)가 다르기에, <br> 
+    YAML 파일 존재 여부에 따라 리소스 생성이 문제 없도록 fallback 처리한다. <br>
 
     - Terraform에는 리소스를 여러 번 생성 가능한 for문과 같은 `count`, `for_each`가 존재.
-      1. `count`는 설정한 횟수만큼 동일한 구성의 리소스를 생성.
-      2. `for_each`는 해당 리소스에 대한 여러 구성에 맞게 각각 리소스 생성.
+      1️⃣ `count`는 설정한 횟수만큼 동일한 구성의 리소스를 생성.
+      2️⃣ `for_each`는 해당 리소스에 대한 여러 구성에 맞게 각각 리소스 생성.
          - *map 타입*과 _key-value 형태의 object 타입_ 사용 가능.
          - YAML은 key-value 형태의 object 타입 그 자체이기에, 사용하기 적합. <br>
-           => ✅ locals.tf에서 `중첩 3항 연산자`를 통해, 4번 목표를 안전하게 **fallback** 가능.
+           => ✅ locals.tf에서 `중첩 3항 연산자`를 통해 **fallback** 처리.
 
-         - [locals.tf로 이동하기](https://github.com/steamedEggMaster/terraform-google-multi-env/blob/main/terraform-google/locals.tf)
+   - [locals.tf로 이동하기](https://github.com/steamedEggMaster/terraform-google-multi-env/blob/main/terraform-google/locals.tf)
 
 <br>
 
@@ -144,20 +149,20 @@ Terraform과 모듈에 대해 학습 후 직접 설계하고 인터넷을 참고
      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `terragrunt plan -target=module.private_cluster -out=tfplan` 실행하고 <br>
      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `Terragrunt plan -out=tfplan` 를 실행한다.
 
-     - [main.tf로 이동하기](https://github.com/steamedEggMaster/terraform-google-multi-env/blob/main/terraform-google/main.tf)
+   - [main.tf로 이동하기](https://github.com/steamedEggMaster/terraform-google-multi-env/blob/main/terraform-google/main.tf)
     
 <br>
 
 6. `서비스 외부 IP들`을 `Output으로 출력`한다.
 
    - Ingress Controller 외부 IP 같은 도메인 연결에 필요한 데이터를 가져오기 위해, <br>
-     매번 `gcloud CLI`로 접속 및 `kubectl get svc -n ingress-nginx`로 가져오는 것은 번거로운 작업.
-     - Ingress 이외에도 여러 서비스의 외부 IP를 가져올 수 있음.(ex Redis)
+     `gcloud CLI`로 접속 및 `kubectl get svc -n ingress-nginx`로 가져오는 것은 번거로운 작업.
+     - Ingress 이외에도 여러 서비스의 외부 IP를 가져올 수 있음.(ex Grafana, Redis)
 
-     => ✅ `kubernetes_service Data` 리소스를 활용하여, <br>
-     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; IP값을 가져온 후, Output을 통해 출력하자!
+     => ✅ `kubernetes_service Data 리소스`를 활용하여, <br>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; IP 값을 가져온 후, Output을 통해 출력하자!
 
-     - [data.tf로 이동하기](https://github.com/steamedEggMaster/terraform-google-multi-env/blob/main/terraform-google/data.tf)
+   - [data.tf로 이동하기](https://github.com/steamedEggMaster/terraform-google-multi-env/blob/main/terraform-google/data.tf)
    
 <br>
 <br>
