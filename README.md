@@ -35,10 +35,12 @@
 
 # What is This?
 
-이 프로젝트는 steamedEggMaster가 dev, prd 등 GCP 기반의 여러 환경들을 <br>
-효율적으로 관리하기 위해 설계된 Terraform 모듈입니다. <br>
+이 프로젝트는 `steamedEggMaster`가 `dev`, `prd` 등 GCP 기반의 여러 환경들을 <br>
+효율적으로 관리하기 위해 설계된 `Terraform Module` 입니다. <br>
+<br>
 `Child Module`들은 GCP에서 제공하는 `공식 Terraform 모듈 깃허브`를 Fork하여 사용하였으며, 🍴 <br>
 그 외 kubernetes, helm Resource 등 단일 리소스들은 `Terraform Registry`를 활용하여 작성하였습니다. 📝 <br>
+<br>
 Terraform과 모듈에 대해 학습 후 직접 설계하고 인터넷을 참고하여 만든 것이기에 실수가 많고 부족한 부분이 많습니다. <br>
 `Pull Request` or `Issue` 를 활용한 피드백은 정말정말 감사합니다. 😁
 
