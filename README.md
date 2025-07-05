@@ -107,11 +107,11 @@ Terraform과 모듈에 대해 학습 후 직접 설계하고 인터넷을 참고
 
 <br>
 
-3.  GitOps 기반 리소스들을 제외하고, <br>
-    Kubernetes 생성과 동시에 필요한 리소스 <br>
-    (예 : namespace, ingress-nginx, cert-manager 등)를 **Terraform으로 생성**한다.
+3. GitOps 기반 리소스들을 제외하고, <br>
+   Kubernetes 생성과 동시에 필요한 리소스 <br>
+   (`namespace`, `ingress-nginx`, `cert-manager` 등)를 **Terraform으로 생성**한다.
 
-    - 기존에는 직접 다운로드 및 명령어 실행 등 수동적 작업이 존재. ♨️ <br>
+   - 기존에는 직접 다운로드 및 명령어 실행 등 수동적 작업이 존재. ♨️ <br>
 
        - `Helm, kubernetes Provider`를 사용하여 자동화. <br>
              Terraform은 단순히 클라우드 리소스만이 아닌, <br> 
@@ -126,8 +126,8 @@ Terraform과 모듈에 대해 학습 후 직접 설계하고 인터넷을 참고
 
 <br>
 
-4.  각 환경 별로 필요한 리소스(YAML 파일)가 다르기에, <br> 
-    YAML 파일 존재 여부에 따라 리소스 생성이 문제 없도록 fallback 처리한다. <br>
+4. 각 환경 별로 필요한 리소스(YAML 파일)가 다르기에, <br> 
+   YAML 파일 존재 여부에 따라 리소스 생성이 문제 없도록 fallback 처리한다. <br>
 
     - Terraform에는 리소스를 여러 번 생성 가능한 for문과 같은 `count`, `for_each`가 존재.
       1️⃣ `count`는 설정한 횟수만큼 동일한 구성의 리소스를 생성.
