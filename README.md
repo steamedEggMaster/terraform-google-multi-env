@@ -132,8 +132,9 @@ Terraform과 모듈에 대해 학습 후 직접 설계하고 인터넷을 참고
    YAML 파일 존재 여부에 따라 리소스 생성이 문제 없도록 fallback 처리한다. <br>
 
     - Terraform에는 리소스를 여러 번 생성 가능한 for문과 같은 `count`, `for_each`가 존재.
-      1️⃣ `count`는 설정한 횟수만큼 동일한 구성의 리소스를 생성.
-      2️⃣ `for_each`는 해당 리소스에 대한 여러 구성에 맞게 각각 리소스 생성.
+      
+      1️⃣ `count`는 설정한 횟수만큼 동일한 구성의 리소스를 생성. <br>
+      2️⃣ `for_each`는 해당 리소스에 대한 여러 구성에 맞게 각각 리소스 생성. <br>
          - *map 타입*과 _key-value 형태의 object 타입_ 사용 가능.
          - YAML은 key-value 형태의 object 타입 그 자체이기에, 사용하기 적합. <br>
            => ✅ locals.tf에서 `중첩 3항 연산자`를 통해 **fallback** 처리.
