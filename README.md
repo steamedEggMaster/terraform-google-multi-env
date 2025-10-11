@@ -57,7 +57,7 @@ Terraform과 모듈에 대해 학습 후 직접 설계하고 인터넷을 참고
 # 개선점
 
 <details>
-<summary>1️⃣ <code>terraform.tfvars</code> 파일을 사용하지 않고 <code>terraform.tfvars</code>에는 최소한의 내용만 담는다</summary>
+<summary>1️⃣ <code>terraform.tfvars</code> 파일을 사용하지 않고 <code>variables.tf</code>에는 최소한의 내용만 담는다</summary>
 
    - 기존에 사용하던 <br>
      `terraform.tfvars` 파일은 가독성이 너무 떨어졌고 ⬇️, <br>
